@@ -78,17 +78,29 @@ export default function Header() {
               aria-label="Primary"
             >
               <ul>
-                {NAV_ITEMS.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      aria-current={pathname === item.href ? "page" : undefined}
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
+                {NAV_ITEMS.map((item) =>
+                  item.enabled ? (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        aria-current={pathname === item.href ? "page" : undefined}
+                        onClick={() => setMenuOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ) : (
+                    <li key={item.href}>
+                      <span
+                        className="nav-disabled"
+                        aria-disabled="true"
+                        title={`${item.label} — coming soon`}
+                      >
+                        {item.label}
+                      </span>
+                    </li>
+                  ),
+                )}
               </ul>
             </nav>
           </div>

@@ -369,6 +369,19 @@ nav.main a[aria-current="page"] {
   color: var(--red);
   border-bottom-color: var(--red);
 }
+.nav-disabled {
+  display: block;
+  padding: 14px 15px;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 0.87rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--line-strong);
+  border-bottom: 3px solid transparent;
+  cursor: not-allowed;
+  user-select: none;
+}
 .menu-toggle {
   display: none;
 }
