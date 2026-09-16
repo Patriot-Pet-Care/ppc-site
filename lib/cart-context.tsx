@@ -8,13 +8,35 @@ import {
 } from "react";
 import type { Product } from "@/lib/catalog";
 
-type CartLine = { slug: string; name: string; price: number; image: string; qty: number };
+export type CartLine = {
+  id: string;
+  slug: string;
+  name: string;
+  price: number;
+  image: string;
+  variant?: string;
+  /** Structured option choices behind `variant`'s display string — kept
+   * around so a cart line can be reopened in the quick view and edited,
+   * not just removed. */
+  selected?: Record<string, string>;
+  qty: number;
+};
 type Overlay = "cart" | "search" | null;
 
 type CartContextValue = {
   cart: CartLine[];
-  addToCart: (product: Product) => void;
-  removeFromCart: (slug: string) => void;
+  addToCart: (
+    product: Product,
+    selected?: Record<string, string>,
+    qty?: number,
+  ) => void;
+  updateCartLine: (
+    id: string,
+    product: Product,
+    selected: Record<string, string>,
+    qty: number,
+  ) => void;
+  removeFromCart: (id: string) => void;
   cartCount: number;
   cartTotal: number;
   overlay: Overlay;
@@ -37,33 +59,81 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   function showToast(message: string) {
     setToast(message);
-    setTimeout(() => setToast(null), 2600);
+    setTimeout(() => setToast(null), 4200);
   }
 
-  function addToCart(product: Product) {
+  function variantLabel(selected?: Record<string, string>) {
+    const entries = Object.entries(selected ?? {});
+    if (!entries.length) return undefined;
+    return entries.map(([name, value]) => `${name}: ${value}`).join(", ");
+  }
+
+  function addToCart(
+    product: Product,
+    selected?: Record<string, string>,
+    qty = 1,
+  ) {
+    const variant = variantLabel(selected);
+    const id = variant ? `${product.slug}::${variant}` : product.slug;
     setCart((prev) => {
-      const existing = prev.find((line) => line.slug === product.slug);
+      const existing = prev.find((line) => line.id === id);
       if (existing) {
         return prev.map((line) =>
-          line.slug === product.slug ? { ...line, qty: line.qty + 1 } : line,
+          line.id === id ? { ...line, qty: line.qty + qty } : line,
         );
       }
       return [
         ...prev,
         {
+          id,
           slug: product.slug,
           name: product.name,
           price: product.price,
           image: product.image,
-          qty: 1,
+          variant,
+          selected,
+          qty,
         },
       ];
     });
-    showToast(`${product.name} added to cart`);
+    showToast(`${product.name}${variant ? ` (${variant})` : ""} added to cart`);
   }
 
-  function removeFromCart(slug: string) {
-    setCart((prev) => prev.filter((line) => line.slug !== slug));
+  function updateCartLine(
+    id: string,
+    product: Product,
+    selected: Record<string, string>,
+    qty: number,
+  ) {
+    const variant = variantLabel(selected);
+    const newId = variant ? `${product.slug}::${variant}` : product.slug;
+    setCart((prev) => {
+      const withoutOld = prev.filter((line) => line.id !== id);
+      const dupIndex = withoutOld.findIndex((line) => line.id === newId);
+      if (dupIndex >= 0) {
+        return withoutOld.map((line, i) =>
+          i === dupIndex ? { ...line, qty: line.qty + qty } : line,
+        );
+      }
+      return [
+        ...withoutOld,
+        {
+          id: newId,
+          slug: product.slug,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          variant,
+          selected,
+          qty,
+        },
+      ];
+    });
+    showToast(`${product.name} updated`);
+  }
+
+  function removeFromCart(id: string) {
+    setCart((prev) => prev.filter((line) => line.id !== id));
   }
 
   const cartCount = cart.reduce((n, line) => n + line.qty, 0);
@@ -74,6 +144,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       value={{
         cart,
         addToCart,
+        updateCartLine,
         removeFromCart,
         cartCount,
         cartTotal,

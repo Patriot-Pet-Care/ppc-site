@@ -34,30 +34,32 @@ export default function MailingListModal({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
           />
-          <motion.div
-            className="modal panel navy panel-accent-red split"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="mailingListModalTitle"
-            initial={{ opacity: 0, scale: 0.92, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 6 }}
-            transition={{ duration: 0.25, ease: [0.21, 0.47, 0.32, 0.98] }}
-          >
-            <button
-              type="button"
-              className="icon-btn modal-close"
-              onClick={onClose}
-              style={{ borderColor: "rgba(255,255,255,.3)", color: "#fff" }}
+          <div className="modal-center">
+            <motion.div
+              className="modal panel navy panel-accent-red split"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="mailingListModalTitle"
+              initial={{ opacity: 0, scale: 0.92, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 6 }}
+              transition={{ duration: 0.25, ease: [0.21, 0.47, 0.32, 0.98] }}
             >
-              <Icon name="x" width={18} height={18} />
-              <span className="sr">Close</span>
-            </button>
-            <div id="mailingListModalTitle">
-              <MailingListIntro />
-            </div>
-            <EmailForm />
-          </motion.div>
+              <button
+                type="button"
+                className="icon-btn modal-close"
+                onClick={onClose}
+                style={{ borderColor: "rgba(255,255,255,.3)", color: "#fff" }}
+              >
+                <Icon name="x" width={18} height={18} />
+                <span className="sr">Close</span>
+              </button>
+              <div id="mailingListModalTitle">
+                <MailingListIntro />
+              </div>
+              <EmailForm />
+            </motion.div>
+          </div>
         </>
       )}
     </AnimatePresence>
