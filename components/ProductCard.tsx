@@ -21,7 +21,6 @@ export default function ProductCard({ product }: { product: Product }) {
           sizes="(min-width: 1080px) 25vw, (min-width: 620px) 50vw, 100vw"
           style={{ objectFit: "cover" }}
         />
-        {product.note && <span className="ribbon oos">Data issue</span>}
       </div>
       <div className="body">
         <p className="cat">{product.sub}</p>
@@ -29,11 +28,6 @@ export default function ProductCard({ product }: { product: Product }) {
         <p className="muted" style={{ fontSize: ".9rem" }}>
           {product.description}
         </p>
-        {product.note && (
-          <p className="muted" style={{ fontSize: ".85rem" }}>
-            {product.note}
-          </p>
-        )}
         <p className="price">{money(product.price)}</p>
         <div className="foot">
           <button

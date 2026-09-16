@@ -26,16 +26,6 @@ export default function ShopAllPage() {
 
       <div className="band band-cream tight">
         <div className="wrap">
-          <div className="legend" role="note">
-            <span className="k">
-              <span className="sw real" /> Verified against the product
-              register (Sept 1 Wix export)
-            </span>
-            <span className="k">
-              <span className="sw oos" /> Data issue flagged for correction
-            </span>
-          </div>
-
           <Reveal y={16}>
             <ShopExplorer />
           </Reveal>
