@@ -8,11 +8,11 @@ export type NavItem = {
 };
 
 // Exact order ported from the shared header markup in every approved page
-// prototype (PPC MARKETPLACE/7 _ HTML/*.html).
-// "Home" is deliberately omitted — the brand mark already links there,
-// and a duplicate "Home" tab is redundant per the client's own reference
-// build (confirmed 2026-09-16).
+// prototype (PPC MARKETPLACE/7 _ HTML/*.html), with "Home" added back in
+// per explicit request (2026-09-16) — reverses the earlier decision to
+// omit it since the brand mark already links there.
 export const NAV_ITEMS: NavItem[] = [
+  { label: "Home", href: "/", enabled: true },
   { label: "Shop All", href: "/shop", enabled: true },
   { label: "Pet Parent Resources", href: "/pet-parent-resources" },
   { label: "Merchandise", href: "/merchandise" },
