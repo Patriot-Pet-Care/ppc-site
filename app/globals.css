@@ -1,26 +1,59 @@
 @import "tailwindcss";
+@import "./components.css";
 
+/*
+ * Design tokens ported verbatim from the client's approved page prototypes
+ * (PPC MARKETPLACE/7 _ HTML/*.html — about, consulting, merchandise, etc.),
+ * whose embedded stylesheet states it "matches the approved home-page
+ * prototype and the live Wix build." Treat these as the source of truth
+ * over any earlier extraction from the Phase 6 build guide.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-navy: #021f42;
+  --color-navy-deep: #01152e;
+  --color-navy-soft: #0c3a6b;
+  --color-cream: #faf7f2;
+  --color-cream-deep: #f2ece2;
+  --color-red: #b3202e;
+  --color-red-dark: #8c1723;
+  --color-gold: #c8a44d;
+  --color-gold-soft: #efe2c4;
+  --color-ink: #1a1a1a;
+  --color-muted: #55606e;
+  --color-line: #e3dcd1;
+  --color-line-strong: #cbbfae;
+  --color-ok: #1f6b4a;
+  --color-warn: #8a5a00;
+
+  --background: var(--color-cream);
+  --foreground: var(--color-navy);
 }
 
 @theme inline {
+  --color-navy: var(--color-navy);
+  --color-navy-deep: var(--color-navy-deep);
+  --color-navy-soft: var(--color-navy-soft);
+  --color-cream: var(--color-cream);
+  --color-cream-deep: var(--color-cream-deep);
+  --color-red: var(--color-red);
+  --color-red-dark: var(--color-red-dark);
+  --color-gold: var(--color-gold);
+  --color-gold-soft: var(--color-gold-soft);
+  --color-ink: var(--color-ink);
+  --color-muted: var(--color-muted);
+  --color-line: var(--color-line);
+  --color-line-strong: var(--color-line-strong);
+  --color-ok: var(--color-ok);
+  --color-warn: var(--color-warn);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-serif: var(--font-playfair);
+  --font-display: var(--font-oswald);
+  --font-sans: var(--font-source-sans);
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
 }
