@@ -467,6 +467,51 @@ nav.main a[aria-current="page"] {
   text-align: center;
 }
 
+/* ---------- PAW ACCENT (decorative, fills empty band space) ---------- */
+.paw-accent {
+  position: absolute;
+  top: 50%;
+  z-index: -1;
+  opacity: 0.16;
+  pointer-events: none;
+}
+.paw-accent-left {
+  left: -30px;
+  transform: translateY(-50%) rotate(-16deg);
+}
+.paw-accent-right {
+  right: -30px;
+  transform: translateY(-50%) rotate(16deg) scaleX(-1);
+}
+.paw-accent-trail {
+  position: absolute;
+  bottom: -22px;
+  right: -34px;
+  transform: rotate(24deg);
+}
+@media (max-width: 760px) {
+  .paw-accent {
+    display: none;
+  }
+}
+
+/* ---------- PAW SCATTER (big, subtle, random pop-in) ---------- */
+.paw-scatter {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.paw-scatter-print {
+  position: absolute;
+  color: var(--navy);
+}
+@media (max-width: 760px) {
+  .paw-scatter {
+    display: none;
+  }
+}
+
 /* ---------- GRID ---------- */
 .grid {
   display: grid;

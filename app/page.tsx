@@ -9,6 +9,8 @@ import HeroReveal from "@/components/HeroReveal";
 import HeroTextReveal from "@/components/HeroTextReveal";
 import EnvelopeCard from "@/components/EnvelopeCard";
 import MailingListIntro from "@/components/MailingListIntro";
+import PawAccent from "@/components/PawAccent";
+import PawScatter from "@/components/PawScatter";
 import { PRODUCTS, MERCHANDISE_TILES } from "@/lib/catalog";
 
 const FEATURED_NUMBERS = [20, 11, 13, 26]; // Collar, Tee, Cap, Tumbler — Phase 6 build guide §3
@@ -209,7 +211,11 @@ export default function Home() {
       </section>
 
       {/* Section 2 — Shop by Category */}
-      <section className="band band-cream">
+      <section
+        className="band band-cream"
+        style={{ position: "relative", overflow: "hidden", zIndex: 0 }}
+      >
+        <PawAccent side="left" tone="navy" />
         <div className="wrap sechead center">
           <p className="eyebrow center">Shop by Category</p>
           <h2>Six ways into the Marketplace</h2>
@@ -235,7 +241,11 @@ export default function Home() {
       </section>
 
       {/* Section 3 — Featured Products */}
-      <section className="band band-white">
+      <section
+        className="band band-white"
+        style={{ position: "relative", overflow: "hidden", zIndex: 0 }}
+      >
+        <PawAccent side="right" tone="gold" />
         <div className="wrap sechead center">
           <p className="eyebrow center">Featured Products</p>
           <h2>Four from the catalog, not all thirty-eight</h2>
@@ -255,7 +265,11 @@ export default function Home() {
       </section>
 
       {/* Section 4 — Digital Resource Feature */}
-      <section className="band band-cream">
+      <section
+        className="band band-cream"
+        style={{ position: "relative", overflow: "hidden", zIndex: 0 }}
+      >
+        <PawAccent side="right" tone="gold" />
         <Reveal className="wrap split">
           <div className="panel navy panel-accent-red">
             <p className="eyebrow on-navy" style={{ marginBottom: 8 }}>
@@ -308,7 +322,11 @@ export default function Home() {
       </section>
 
       {/* Section 4b — PPC Premium Pet Care Library */}
-      <section className="band band-white">
+      <section
+        className="band band-white"
+        style={{ position: "relative", overflow: "hidden", zIndex: 0 }}
+      >
+        <PawAccent side="left" tone="navy" />
         <div className="wrap sechead center">
           <p className="eyebrow center">Premium Content</p>
           <h2>The PPC Premium Pet Care Library&trade;</h2>
@@ -381,7 +399,11 @@ export default function Home() {
       </section>
 
       {/* Section 5 — Official PPC Merchandise */}
-      <section className="band band-deep">
+      <section
+        className="band band-deep"
+        style={{ position: "relative", overflow: "hidden", zIndex: 0 }}
+      >
+        <PawScatter />
         <div className="wrap sechead center">
           <p className="eyebrow center">Official Merchandise</p>
           <h2>Wear the motto</h2>
@@ -472,7 +494,11 @@ export default function Home() {
       </section>
 
       {/* Section 7 — Professional Resources */}
-      <section className="band band-cream">
+      <section
+        className="band band-cream"
+        style={{ position: "relative", overflow: "hidden", zIndex: 0 }}
+      >
+        <PawAccent side="left" tone="red" />
         <Reveal className="wrap split">
           <div>
             <p className="eyebrow">For the Trade</p>
@@ -526,7 +552,11 @@ export default function Home() {
       </section>
 
       {/* Section 8 — Brand Trust */}
-      <section className="band band-deep">
+      <section
+        className="band band-deep"
+        style={{ position: "relative", overflow: "hidden", zIndex: 0 }}
+      >
+        <PawAccent side="right" tone="red" />
         <div className="wrap sechead center">
           <p className="eyebrow center">Why Buy Here</p>
           <h2>The Patriot&rsquo;s Pet Care family behind every order</h2>
@@ -548,7 +578,11 @@ export default function Home() {
       </section>
 
       {/* Section 8b — Where to go for what */}
-      <section className="band band-white tight">
+      <section
+        className="band band-white tight"
+        style={{ position: "relative", overflow: "hidden", zIndex: 0 }}
+      >
+        <PawAccent side="left" tone="navy" />
         <Reveal className="wrap split" y={16}>
           <div>
             <p className="eyebrow">Two Companies, One Family</p>
@@ -621,7 +655,11 @@ export default function Home() {
       </section>
 
       {/* Section 9 — Email Capture */}
-      <section className="band band-cream">
+      <section
+        className="band band-cream"
+        style={{ position: "relative", overflow: "hidden", zIndex: 0 }}
+      >
+        <PawAccent side="right" tone="gold" />
         <div className="wrap">
           <Reveal className="panel navy split" style={{ padding: 44 }}>
             <MailingListIntro />
